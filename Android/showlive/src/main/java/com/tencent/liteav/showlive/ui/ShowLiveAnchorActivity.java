@@ -241,7 +241,7 @@ public class ShowLiveAnchorActivity extends AppCompatActivity {
     }
 
     private void initData() {
-        String pushUrl = URLUtils.generatePushUrl(TUILogin.getUserId(), URLUtils.PushType.RTC);
+        String pushUrl = URLUtils.generatePushUrl(TUILogin.getUserId(), URLUtils.PushType.RTMP);
         mTUIPusherView.start(pushUrl);
     }
 

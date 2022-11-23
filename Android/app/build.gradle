@@ -5,7 +5,7 @@ android {
     buildToolsVersion "28.0.3"
 
     defaultConfig {
-        applicationId "com.tencent.qcloud.xiaozhibo"
+        applicationId "com.fuzhou.fgtx"
         versionName "1.0"
         versionCode 1
         minSdkVersion 19

@@ -19,7 +19,8 @@ public class URLUtils {
     public static final String RTMP        = "rtmp://";
     public static final String HTTP        = "http://";
     public static final String TRTC        = "trtc://";
-    public static final String TRTC_DOMAIN = "cloud.tencent.com";
+    public static final String TRTC_DOMAIN = "qpush.zgfznews.com";
+    public static final String RTMP_DOMAIN = "qpush.zgfznews.com";
     public static final String APP_NAME    = "live";
 
     /**
@@ -33,7 +34,13 @@ public class URLUtils {
     public static String generatePushUrl(String streamId, PushType type) {
         String pushUrl = "";
         if (type == PushType.RTC) {
-            pushUrl = TRTC + TRTC_DOMAIN + "/push/" + streamId + "?sdkappid=" + TUILogin.getSdkAppId() + "&userid="
+            pushUrl =
+                    TRTC + TRTC_DOMAIN +  File.separator +APP_NAME +  File.separator+ streamId +
+                            "?sdkappid=" + TUILogin.getSdkAppId() + "&userid="
+                    + TUILogin.getUserId() + "&usersig=" + TUILogin.getUserSig();
+        }else if (type ==PushType.RTMP){
+            pushUrl =
+                    RTMP + RTMP_DOMAIN + File.separator + APP_NAME+  File.separator + streamId + "?sdkappid=" + TUILogin.getSdkAppId() + "&userid="
                     + TUILogin.getUserId() + "&usersig=" + TUILogin.getUserSig();
         }
         return pushUrl;

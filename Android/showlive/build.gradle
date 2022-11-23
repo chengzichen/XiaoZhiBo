@@ -23,8 +23,8 @@ dependencies {
     api project(':tuicore')
     api project(':tuipusher')
     api project(':tuiplayer')
-    api project(':tuibeauty')
+//    api project(':tuibeauty')//美颜
     api project(':tuibarrage')
-    api project(':tuiaudioeffect')
-    api project(':tuigift')
+//    api project(':tuiaudioeffect')//音效
+//    api project(':tuigift')
 }
