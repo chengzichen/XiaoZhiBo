@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/transparent"
@@ -13,10 +14,10 @@
         android:layout_height="44dp"
         android:layout_centerInParent="true"
         android:layout_marginRight="15dp"
-        android:layout_marginBottom="15dp"
         android:src="@drawable/showlive_close_icon"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/ll_audience_live_audience_list"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ll_audience_live_audience_list" />
 
     <ImageView
         android:id="@+id/btn_report"
@@ -110,13 +111,13 @@
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
 
     <include
+        android:layout_marginEnd="3dp"
         android:id="@+id/ll_audience_live_audience_list"
         layout="@layout/showlive_include_live_audience_list"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginEnd="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/relativeLayout"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/iv_close"
         app:layout_constraintTop_toTopOf="@+id/relativeLayout" />
 
     <ImageView

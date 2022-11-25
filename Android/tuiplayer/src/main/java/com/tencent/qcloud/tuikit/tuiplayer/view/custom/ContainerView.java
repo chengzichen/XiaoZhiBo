@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
@@ -26,6 +27,7 @@ public class ContainerView extends FrameLayout {
     private static final String TAG = "ContainerView";
 
     private View           mViewRoot;
+    private LinearLayout mLlContainer;
     private ImageView      mImageLink;
     private RelativeLayout mLayoutGift;
     private RelativeLayout mLayoutLike;
@@ -44,6 +46,7 @@ public class ContainerView extends FrameLayout {
         super(context, attrs);
         mViewRoot = LayoutInflater.from(getContext()).inflate(R.layout.tuiplayer_container_view, this, true);
         mImageLink = mViewRoot.findViewById(R.id.iv_link);
+        mLlContainer = mViewRoot.findViewById(R.id.ll_container);
         mLayoutBarrage = mViewRoot.findViewById(R.id.rl_barrage);
         mLayoutBarrageShow = mViewRoot.findViewById(R.id.rl_barrage_show);
         mLayoutGift = mViewRoot.findViewById(R.id.rl_gift);
@@ -130,7 +133,7 @@ public class ContainerView extends FrameLayout {
     }
 
     public void setBarrageView(View view) {
-        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(mIconWidth, mIconHeight);
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         params.addRule(RelativeLayout.CENTER_IN_PARENT);
         mLayoutBarrage.addView(view, params);
     }
@@ -155,6 +158,10 @@ public class ContainerView extends FrameLayout {
     public void setGiftShowView(View view) {
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         mLayoutGiftShow.addView(view, params);
+    }
+
+    public void addOtherView(View view) {
+        mLlContainer.addView(view);
     }
 
     public void setLinkImage(int resId) {

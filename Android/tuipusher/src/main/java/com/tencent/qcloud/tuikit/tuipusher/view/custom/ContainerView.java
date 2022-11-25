@@ -129,7 +129,7 @@ public class ContainerView extends FrameLayout {
     }
 
     public void setBarrage(View view) {
-        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(mIconWidth, mIconHeight);
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         params.addRule(RelativeLayout.CENTER_IN_PARENT);
         mLayoutBarrage.addView(view, params);
     }

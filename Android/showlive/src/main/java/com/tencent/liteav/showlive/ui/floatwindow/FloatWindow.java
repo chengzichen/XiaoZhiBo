@@ -145,7 +145,7 @@ public class FloatWindow implements IFloatWindowCallback {
         mTUIPlayerView = new TUIPlayerView(mContext);
         mTUIPlayerView.updatePlayerUIState(TUIPlayerView.TUIPlayerUIState.TUIPLAYER_UISTATE_VIDEOONLY);
         mTUIPlayerView.setGroupId(getRoomId());
-        String playUrl = URLUtils.generatePlayUrl(getRoomId(), URLUtils.PlayType.WEBRTC);
+        String playUrl = URLUtils.generatePlayUrl(getRoomId(), URLUtils.PlayType.RTMP);
         mTUIPlayerView.startPlay(playUrl);
         ((ViewGroup) mRootView).addView(mTUIPlayerView);
         mImageClose = view.findViewById(R.id.iv_close_float_window);

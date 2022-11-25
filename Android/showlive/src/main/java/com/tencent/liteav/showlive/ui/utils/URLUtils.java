@@ -60,6 +60,8 @@ public class URLUtils {
             playUrl = "trtc://cloud.tencent.com/play/" + streamId + "?sdkappid=" + TUILogin.getSdkAppId() + "&userid="
                     + TUILogin.getUserId() + "&usersig=" + TUILogin.getUserSig();
         } else if (type == PlayType.RTMP) {
+            playUrl = RTMP + GenerateTestUserSig.PLAY_DOMAIN + File.separator + APP_NAME + File.separator + streamId;
+        } else if (type == PlayType.HTTP) {
             playUrl = HTTP + GenerateTestUserSig.PLAY_DOMAIN + File.separator + APP_NAME + File.separator + streamId
                     + ".flv";
         } else if (type == PlayType.WEBRTC) {
@@ -77,6 +79,7 @@ public class URLUtils {
     public enum PlayType {
         RTC,
         RTMP,
+        HTTP,
         WEBRTC
     }
 }

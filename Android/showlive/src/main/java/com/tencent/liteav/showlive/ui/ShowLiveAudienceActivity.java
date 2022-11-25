@@ -6,11 +6,15 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,6 +39,7 @@ import com.tencent.liteav.showlive.ui.utils.URLUtils;
 import com.tencent.liteav.showlive.ui.utils.Utils;
 import com.tencent.liteav.showlive.ui.view.ConfirmDialogFragment;
 import com.tencent.liteav.showlive.ui.view.ShowAudienceFunctionView;
+import com.tencent.qcloud.tuicore.util.ScreenUtil;
 import com.tencent.qcloud.tuicore.util.ToastUtil;
 import com.tencent.qcloud.tuikit.tuiplayer.view.TUIPlayerView;
 import com.tencent.qcloud.tuikit.tuiplayer.view.listener.TUIPlayerViewListener;
@@ -193,6 +198,21 @@ public class ShowLiveAudienceActivity extends AppCompatActivity {
                 .findViewByPosition(position).findViewById(R.id.recycler_item_player_view);
         final ShowAudienceFunctionView mShowAudienceFunctionView = mRecycleLiveRoom.getLayoutManager()
                 .findViewByPosition(position).findViewById(R.id.recycler_item_function_view);
+        mTUIPlayerView.disableLinkMic();
+        TextView view=new TextView(this);
+        view.setText("测试");
+        LinearLayout.LayoutParams layoutParams =
+                new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        layoutParams.gravity = Gravity.CENTER;
+        view.setPadding(ScreenUtil.dip2px(15),0,ScreenUtil.dip2px(15),0);
+        view.setLayoutParams(layoutParams);
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ToastUtil.toastShortMessage("戳死");
+            }
+        });
+        mTUIPlayerView.addOtherBottomView(view);
         mRoomId = Integer.parseInt(mRoomInfoList.get(position).ownerId);
         mShowAudienceFunctionView.setAnchorInfo(mRoomInfoList.get(position).coverUrl,
                 mRoomInfoList.get(position).roomName, mRoomId, mAnchorId);
@@ -204,7 +224,7 @@ public class ShowLiveAudienceActivity extends AppCompatActivity {
             }
         });
         mTUIPlayerView.setGroupId(mRoomId + "");
-        String playUrl = URLUtils.generatePlayUrl(mRoomId + "", URLUtils.PlayType.WEBRTC);
+        String playUrl = URLUtils.generatePlayUrl(mRoomId + "", URLUtils.PlayType.RTMP);
         mTUIPlayerView.startPlay(playUrl);
         mTUIPlayerView.pauseAudio();
         mTUIPlayerView.setTUIPlayerViewListener(new TUIPlayerViewListener() {

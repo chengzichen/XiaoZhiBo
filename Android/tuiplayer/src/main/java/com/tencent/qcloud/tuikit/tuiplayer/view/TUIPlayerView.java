@@ -363,6 +363,10 @@ public class TUIPlayerView extends FrameLayout implements ITUIPlayerView {
         mContainerView.setLinkVisible(View.GONE);
     }
 
+    public void addOtherBottomView(View view){
+        mContainerView.addOtherView(view);
+    }
+
     @Override
     public void resumeAudio() {
         mTUIPlayerPresenter.resumeAudio();
