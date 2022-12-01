@@ -3,6 +3,7 @@ package com.tencent.qcloud.tuikit.tuigift.presenter;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 
 import com.tencent.qcloud.tuicore.TUILogin;
 import com.tencent.qcloud.tuikit.tuigift.R;
@@ -19,12 +20,12 @@ import java.util.List;
  */
 public class TUIGiftPresenter {
 
-    private TUIGiftPlayView      mPlayView;
+    private TUIGiftPlayView mPlayView;
     private TUIGiftListPanelView mPanelView;
-    private String               mGroupId;
-    private TUIGiftIMService     mImService;
-    private Context              mContext;
-    private TUIGiftDataDownload  mGiftDataDownload;
+    private String mGroupId;
+    private TUIGiftIMService mImService;
+    private Context mContext;
+    private TUIGiftDataDownload mGiftDataDownload;
 
     public TUIGiftPresenter(Context context, String groupId) {
         mContext = context;
@@ -32,6 +33,7 @@ public class TUIGiftPresenter {
     }
 
     public void initGiftPlayView(TUIGiftPlayView playView) {
+        Log.d("TUIGiftPresenter", "initGiftPlayView: " + playView);
         this.mPlayView = playView;
         initIMService();
     }
@@ -107,7 +109,9 @@ public class TUIGiftPresenter {
      */
     public void recvGroupGiftMessage(String groupId, TUIGiftModel giftModel) {
         if (mGroupId != null && mGroupId.equals(groupId)) {
-            mPlayView.receiveGift(giftModel);
+            if (mPlayView != null) {
+                mPlayView.receiveGift(giftModel);
+            }
         }
     }
 
@@ -118,7 +122,9 @@ public class TUIGiftPresenter {
      */
     public void recvGroupLikeMessage(String groupId) {
         if (mGroupId != null && mGroupId.equals(groupId)) {
-            mPlayView.receiveLike();
+            if (mPlayView != null) {
+                mPlayView.receiveLike();
+            }
         }
     }
 

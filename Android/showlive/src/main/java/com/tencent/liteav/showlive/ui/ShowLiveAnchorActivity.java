@@ -79,11 +79,11 @@ public class ShowLiveAnchorActivity extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         initStatusBar();
         setContentView(R.layout.showlive_anchor_activity);
-        Map<String, Object> map = new HashMap<>();
-        map.put(TUIConstants.TUIBeauty.PARAM_NAME_CONTEXT, ShowLiveAnchorActivity.this);
-        map.put(TUIConstants.TUIBeauty.PARAM_NAME_LICENSE_URL, XMAGIC_LICENSE_URL);
-        map.put(TUIConstants.TUIBeauty.PARAM_NAME_LICENSE_KEY, XMAGIC_LICENSE_KEY);
-        TUICore.callService(TUIConstants.TUIBeauty.SERVICE_NAME, TUIConstants.TUIBeauty.METHOD_INIT_XMAGIC, map);
+//        Map<String, Object> map = new HashMap<>();
+//        map.put(TUIConstants.TUIBeauty.PARAM_NAME_CONTEXT, ShowLiveAnchorActivity.this);
+//        map.put(TUIConstants.TUIBeauty.PARAM_NAME_LICENSE_URL, XMAGIC_LICENSE_URL);
+//        map.put(TUIConstants.TUIBeauty.PARAM_NAME_LICENSE_KEY, XMAGIC_LICENSE_KEY);
+//        TUICore.callService(TUIConstants.TUIBeauty.SERVICE_NAME, TUIConstants.TUIBeauty.METHOD_INIT_XMAGIC, map);
         mTUIPusherView = findViewById(R.id.anchor_pusher_view);
         initPreviewView();
         initFunctionView();

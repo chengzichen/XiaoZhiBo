@@ -512,6 +512,11 @@ public class TUIPusherView extends FrameLayout implements ITUIPusherView {
         mTUIPusherPresenter.cancelPK();
     }
 
+    public ContainerView getContainerView() {
+        return mContainerView;
+    }
+
+
 
     @Override
     public void stopPK() {

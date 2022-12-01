@@ -62,6 +62,7 @@ public class LoginWithoutServerActivity extends AppCompatActivity {
         int index = new Random().nextInt(AvatarConstant.USER_AVATAR_ARRAY.length);
         userModel.userAvatar = AvatarConstant.USER_AVATAR_ARRAY[index];
         userModel.userSig = GenerateTestUserSig.genTestUserSig(userId);
+        Log.d(TAG, "login: "+userModel.userSig);
         UserModelManager.getInstance().setUserModel(userModel);
         V2TIMSDKConfig config = new V2TIMSDKConfig();
         config.setLogLevel(V2TIMSDKConfig.V2TIM_LOG_DEBUG);

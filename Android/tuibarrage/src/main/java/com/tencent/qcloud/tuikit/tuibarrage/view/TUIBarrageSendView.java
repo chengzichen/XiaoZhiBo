@@ -162,6 +162,11 @@ public class TUIBarrageSendView extends Dialog implements ITUIBarrageSendView {
         });
     }
 
+    @Override
+    public void sendBarrageMsg(String msg) {
+        sendBarrage(createBarrageModel(msg));
+    }
+
     private TUIBarrageModel createBarrageModel(String message) {
         TUIBarrageModel model = new TUIBarrageModel();
         model.message = message;

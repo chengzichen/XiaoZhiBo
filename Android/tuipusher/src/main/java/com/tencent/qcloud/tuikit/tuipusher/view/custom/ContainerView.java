@@ -31,7 +31,9 @@ public class ContainerView extends FrameLayout {
     private RelativeLayout mLayoutGiftShow;
     private int            mIconWidth;
     private int            mIconHeight;
-
+    private View           barrageSendView;
+    private View           barrageDisplayView;
+    private View           giftDisplayView;
     public ContainerView(@NonNull Context context) {
         this(context, null);
     }
@@ -93,6 +95,7 @@ public class ContainerView extends FrameLayout {
         if (giftRetMap != null && giftRetMap.size() > 0) {
             Object giftDisplayView = giftRetMap.get("TUIGiftPlayView");
             if (giftDisplayView != null && giftDisplayView instanceof View) {
+                this.giftDisplayView= (View) giftDisplayView;
                 setGiftShowView((View) giftDisplayView);
                 TXCLog.i(TAG, "TUIGift TUIGiftPlayView getExtensionInfo success");
             } else {
@@ -110,6 +113,7 @@ public class ContainerView extends FrameLayout {
         if (barrageRetMap != null && barrageRetMap.size() > 0) {
             Object barrageSendView = barrageRetMap.get("TUIBarrageButton");
             if (barrageSendView != null && barrageSendView instanceof View) {
+                this.barrageSendView= (View) barrageSendView;
                 setBarrage((View) barrageSendView);
                 TXCLog.i(TAG, "TUIBarrage barrageSendView getExtensionInfo success");
             } else {
@@ -118,6 +122,7 @@ public class ContainerView extends FrameLayout {
 
             Object barrageDisplayView = barrageRetMap.get("TUIBarrageDisplayView");
             if (barrageDisplayView != null && barrageDisplayView instanceof View) {
+                this.barrageDisplayView= (View) barrageDisplayView;
                 setBarrageShow((View) barrageDisplayView);
                 TXCLog.i(TAG, "TUIBarrage TUIBarrageDisplayView getExtensionInfo success");
             } else {
@@ -155,6 +160,21 @@ public class ContainerView extends FrameLayout {
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         mLayoutGiftShow.addView(view, params);
     }
+
+    public View getBarrageSendView() {
+        return barrageSendView;
+    }
+
+
+    public View getBarrageDisplayView() {
+        return barrageDisplayView;
+    }
+
+
+    public View getGiftDisplayView() {
+        return giftDisplayView;
+    }
+
 
     private int dip2px(float dpValue) {
         final float scale = getResources().getDisplayMetrics().density;

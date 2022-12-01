@@ -26,5 +26,5 @@ dependencies {
 //    api project(':tuibeauty')//美颜
     api project(':tuibarrage')
 //    api project(':tuiaudioeffect')//音效
-//    api project(':tuigift')
+    api project(':tuigift')
 }

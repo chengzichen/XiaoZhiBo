@@ -73,17 +73,17 @@ public class TUIPusherStreamService implements ITUIPusherStreamService {
                 map.put(TUIConstants.TUIBeauty.PARAM_NAME_SRC_TEXTURE_ID, srcFrame.texture.textureId);
                 map.put(TUIConstants.TUIBeauty.PARAM_NAME_FRAME_WIDTH, srcFrame.width);
                 map.put(TUIConstants.TUIBeauty.PARAM_NAME_FRAME_HEIGHT, srcFrame.height);
-                if (TUICore.callService(TUIConstants.TUIBeauty.SERVICE_NAME, TUIConstants.TUIBeauty.METHOD_PROCESS_VIDEO_FRAME, map) != null) {
-                    dstFrame.texture.textureId = (int) TUICore.callService(TUIConstants.TUIBeauty.SERVICE_NAME, TUIConstants.TUIBeauty.METHOD_PROCESS_VIDEO_FRAME, map);
-                } else {
+//                if (TUICore.callService(TUIConstants.TUIBeauty.SERVICE_NAME, TUIConstants.TUIBeauty.METHOD_PROCESS_VIDEO_FRAME, map) != null) {
+//                    dstFrame.texture.textureId = (int) TUICore.callService(TUIConstants.TUIBeauty.SERVICE_NAME, TUIConstants.TUIBeauty.METHOD_PROCESS_VIDEO_FRAME, map);
+//                } else {
                     dstFrame.texture.textureId = srcFrame.texture.textureId;
-                }
+//                }
                 return 0;
             }
 
             @Override
             public void onGLContextDestroyed() {
-                TUICore.callService(TUIConstants.TUIBeauty.SERVICE_NAME, TUIConstants.TUIBeauty.METHOD_DESTROY_XMAGIC, null);
+//                TUICore.callService(TUIConstants.TUIBeauty.SERVICE_NAME, TUIConstants.TUIBeauty.METHOD_DESTROY_XMAGIC, null);
                 super.onGLContextDestroyed();
             }
         });

@@ -10,4 +10,10 @@ public interface ITUIBarrageSendView {
      * @param model 弹幕信息
      */
     void sendBarrage(TUIBarrageModel model);
+    /**
+     * 发送弹幕
+     *
+     * @param msg 弹幕信息
+     */
+    void sendBarrageMsg(String msg);
 }

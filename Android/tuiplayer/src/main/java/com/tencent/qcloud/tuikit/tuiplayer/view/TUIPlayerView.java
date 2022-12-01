@@ -357,6 +357,12 @@ public class TUIPlayerView extends FrameLayout implements ITUIPlayerView {
         mTUIPlayerPresenter.destory();
     }
 
+
+
+    public ContainerView getContainerView() {
+        return mContainerView;
+    }
+
     @Override
     public void disableLinkMic() {
         TXCLog.i(TAG, "disableLinkMic");
