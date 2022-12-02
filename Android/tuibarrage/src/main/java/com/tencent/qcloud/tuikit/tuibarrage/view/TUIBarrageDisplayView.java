@@ -65,6 +65,10 @@ public class TUIBarrageDisplayView extends FrameLayout implements ITUIBarrageDis
         //弹幕暂时不需要处理点击事件,因此点击回调设置为空
         mAdapter = new TUIBarrageMsgListAdapter(context, mMsgList, null);
         mRecyclerMsg.setLayoutManager(new LinearLayoutManager(context));
+        mRecyclerMsg.setHasFixedSize(true);
+
+//设置嵌套滑动是否能用
+        mRecyclerMsg.setNestedScrollingEnabled(false);
         mRecyclerMsg.setAdapter(mAdapter);
     }
 
