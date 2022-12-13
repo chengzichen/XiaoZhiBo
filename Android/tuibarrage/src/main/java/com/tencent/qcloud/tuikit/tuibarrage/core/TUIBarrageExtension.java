@@ -5,6 +5,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.tencent.qcloud.tuicore.interfaces.ITUIExtension;
+import com.tencent.qcloud.tuicore.util.ToastUtil;
 import com.tencent.qcloud.tuikit.tuibarrage.model.TUIBarrageModel;
 import com.tencent.qcloud.tuikit.tuibarrage.view.ITUIBarrageListener;
 import com.tencent.qcloud.tuikit.tuibarrage.view.TUIBarrageButton;
@@ -49,7 +50,10 @@ public class TUIBarrageExtension implements ITUIExtension {
 
                 @Override
                 public void onFailed(int code, String msg) {
-
+                    if (code==10017){
+                        ToastUtil.toastShortMessage("你已被禁言,请文明发言");
+                        button.setEnabled(false);
+                    }
                 }
             });
             hashMap.put(KEY_SEND_VIEW, button.getSendView());
