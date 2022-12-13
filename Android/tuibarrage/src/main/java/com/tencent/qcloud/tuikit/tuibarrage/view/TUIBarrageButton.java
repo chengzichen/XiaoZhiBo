@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import com.tencent.qcloud.tuikit.tuibarrage.R;
 
@@ -16,9 +17,11 @@ import com.tencent.qcloud.tuikit.tuibarrage.R;
 public class TUIBarrageButton extends FrameLayout {
     private static final String TAG = "TUIBarrageButton";
 
-    private Context            mContext;
-    private String             mGroupId;         //用户组ID(房间ID)
+    private Context mContext;
+    private String mGroupId;         //用户组ID(房间ID)
     private TUIBarrageSendView mBarrageSendView; //弹幕发送组件,配合输入法弹出框输入弹幕内容,并发送
+    private TextView tvHide;
+    private View contentView;
 
     public TUIBarrageButton(Context context) {
         super(context);
@@ -44,9 +47,12 @@ public class TUIBarrageButton extends FrameLayout {
     }
 
     private void initView(final Context context) {
+
+        tvHide = findViewById(R.id.tv_hide);
         View view = LayoutInflater.from(context).inflate(R.layout.tuibarrage_view_send, this);
         mBarrageSendView = new TUIBarrageSendView(context, mGroupId);
-        findViewById(R.id.iv_linkto_send_dialog).setOnClickListener(new OnClickListener() {
+        contentView = findViewById(R.id.iv_linkto_send_dialog);
+        contentView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!mBarrageSendView.isShowing()) {
@@ -54,6 +60,17 @@ public class TUIBarrageButton extends FrameLayout {
                 }
             }
         });
+    }
+
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+        contentView.setEnabled(enabled);
+        if (enabled) {
+            tvHide.setText("说点什么吧...");
+        } else {
+            tvHide.setText("已被禁言,请文明发言");
+        }
     }
 
     //弹幕发送弹框显示,宽度自适应屏幕

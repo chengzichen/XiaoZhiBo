@@ -47,7 +47,7 @@ public class GenerateTestUserSig {
      * You can view your `SDKAppId` after creating an application in the [Tencent Cloud IM console](https://console.cloud.tencent.com/avc).
      * SDKAppID uniquely identifies a Tencent Cloud account.
      */
-    public static final int SDKAPPID = 1400751874;
+    public static final int SDKAPPID = ;
 
 
     /**
@@ -79,7 +79,7 @@ public class GenerateTestUserSig {
      * to prevent key disclosure and traffic stealing.
      * Documentation: https://cloud.tencent.com/document/product/269/32688#Server
      */
-    private static final String SECRETKEY = "719e267c3f6cd68f16c2b9a690c14a5d85420c63fa5c9fa46488a276ef082a26";
+    private static final String SECRETKEY = "";
 
 
     /**
@@ -106,7 +106,7 @@ public class GenerateTestUserSig {
      * License Management View (https://console.cloud.tencent.com/live/license)
      * License URL of your application
      */
-    public static final String LICENSEURL = "https://license.vod2.myqcloud.com/license/v2/1259099581_1/v_cube.license";
+    public static final String LICENSEURL = "";
 
     /**
      * 腾讯云直播license管理页面(https://console.cloud.tencent.com/live/license)
@@ -129,7 +129,7 @@ public class GenerateTestUserSig {
      * <p>
      * 腾讯云域名管理页面：https://console.cloud.tencent.com/live/domainmanage
      */
-    public static final String PLAY_DOMAIN ="qlive.zgfznews.com";
+    public static final String PLAY_DOMAIN ="";
 
     /**
      * Calculating UserSig
