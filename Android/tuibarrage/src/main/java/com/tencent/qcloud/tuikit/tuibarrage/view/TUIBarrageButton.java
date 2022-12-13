@@ -47,11 +47,10 @@ public class TUIBarrageButton extends FrameLayout {
     }
 
     private void initView(final Context context) {
-
-        tvHide = findViewById(R.id.tv_hide);
         View view = LayoutInflater.from(context).inflate(R.layout.tuibarrage_view_send, this);
         mBarrageSendView = new TUIBarrageSendView(context, mGroupId);
         contentView = findViewById(R.id.iv_linkto_send_dialog);
+        tvHide = findViewById(R.id.tv_hide);
         contentView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
