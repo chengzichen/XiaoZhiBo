@@ -241,7 +241,7 @@ public class ShowLiveAnchorActivity extends AppCompatActivity {
     }
 
     private void initData() {
-        String pushUrl = "rtmp://imtest-push.zgfznews.com/live/live4?txSecret=b53f5345655ac1666089ed4fd74d2be2&txTime=63980B28";
+        String pushUrl = "rtmp://imtest-push.zgfznews.com/live/live4?txSecret=5e9ad2251ce60f994d346e52abb87477&txTime=63983738";
         mTUIPusherView.start(pushUrl);
     }
 

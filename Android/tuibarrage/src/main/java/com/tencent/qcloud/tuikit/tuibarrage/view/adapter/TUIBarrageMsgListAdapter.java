@@ -69,13 +69,28 @@ public class TUIBarrageMsgListAdapter extends RecyclerView.Adapter<TUIBarrageMsg
         public void bind(final TUIBarrageMsgEntity model,
                          final OnItemClickListener listener) {
             String userName = TextUtils.isEmpty(model.userName) ? model.userId : model.userName;
-            String result = userName + ":" + model.content;
-            SpannableStringBuilder builder = new SpannableStringBuilder(result);
+            SpannableStringBuilder builder = null;
+            String result;
             ForegroundColorSpan redSpan = new ForegroundColorSpan(model.color);
-            if (TextUtils.isEmpty(userName)) {
-                userName = "";
+            if (model.type==0){//弹幕消息
+                result = userName + ": " + model.content;
+                builder = new SpannableStringBuilder(result);
+                if (TextUtils.isEmpty(userName)) {
+                    userName = "";
+                }
+                builder.setSpan(redSpan, 0, userName.length()+1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            }else if (model.type==1){//进入直播间提醒
+                result = userName + " " + model.content;
+                builder = new SpannableStringBuilder(result);
+                if (TextUtils.isEmpty(userName)) {
+                    userName = "";
+                }
+                builder.setSpan(redSpan, 0, userName.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            }else if (model.type==2){//公告
+                result =  model.content;
+                builder = new SpannableStringBuilder(result);
+                builder.setSpan(redSpan, 0, result.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             }
-            builder.setSpan(redSpan, 0, userName.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             mTvMsgContent.setText(builder);
             mTvMsgContent.setBackgroundResource(R.drawable.tuibarrage_bg_msg_item);
 

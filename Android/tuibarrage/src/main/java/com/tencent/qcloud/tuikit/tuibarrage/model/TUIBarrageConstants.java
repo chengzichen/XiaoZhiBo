@@ -6,6 +6,7 @@ public class TUIBarrageConstants {
     public static final String KEY_USER_ID     = "userId";
     public static final String KEY_USER_NAME   = "userName";
     public static final String KEY_USER_AVATAR = "userAvatar";
+    public static final String KEY_MSG_TYPE    = "msgType";
 
     //消息的颜色
     public static final int[] MESSAGE_USERNAME_COLOR = {

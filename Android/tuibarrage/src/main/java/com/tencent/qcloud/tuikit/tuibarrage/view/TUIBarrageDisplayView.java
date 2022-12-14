@@ -90,7 +90,6 @@ public class TUIBarrageDisplayView extends FrameLayout implements ITUIBarrageDis
         Object extInfo = data.get("extInfo");
         if (extInfo !=null&&extInfo instanceof  HashMap){
             tuiBarrageModel.extInfo= (HashMap<String, String>) extInfo;
-            tuiBarrageModel.extInfo.put(TUIBarrageConstants.KEY_USER_NAME, mContext.getString(R.string.tuibarrage_me));
         }
         receiveBarrage(tuiBarrageModel);
     }
@@ -125,15 +124,18 @@ public class TUIBarrageDisplayView extends FrameLayout implements ITUIBarrageDis
         }
         String name = model.extInfo.get(TUIBarrageConstants.KEY_USER_NAME);
         String userId = model.extInfo.get(TUIBarrageConstants.KEY_USER_ID);
+        String typeString = model.extInfo.get(TUIBarrageConstants.KEY_MSG_TYPE);
+        Integer type = !TextUtils.isEmpty(typeString)?Integer.valueOf(typeString):0;
         String userName = TextUtils.isEmpty(name) ? userId : name;
 
         TUIBarrageMsgEntity entity = new TUIBarrageMsgEntity();
         entity.userName = userName;
         entity.content = message;
+        entity.type=type;
 
         //用户名显示随机的颜色值
-        int index = new Random().nextInt(TUIBarrageConstants.MESSAGE_USERNAME_COLOR.length);
-        entity.color = mContext.getResources().getColor(TUIBarrageConstants.MESSAGE_USERNAME_COLOR[index]);
+        entity.color =
+                mContext.getResources().getColor(TUIBarrageConstants.MESSAGE_USERNAME_COLOR[2]);
 
         //接收到弹幕后,更新显示界面
         mMsgList.add(entity);

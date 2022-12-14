@@ -7,13 +7,13 @@ import com.google.gson.annotations.SerializedName;
  */
 public class TUIGiftJson {
 
-    @SerializedName("data")
+    @SerializedName("payload")
     private Data   data;
     @SerializedName("platform")
     private String platform;
     @SerializedName("version")
     private String version;
-    @SerializedName("businessID")
+    @SerializedName("businessId")
     private String businessID;
 
     public Data getData() {
