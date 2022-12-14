@@ -171,7 +171,6 @@ public class TUIBarrageSendView extends Dialog implements ITUIBarrageSendView {
         TUIBarrageModel model = new TUIBarrageModel();
         model.message = message;
         model.extInfo.put(TUIBarrageConstants.KEY_USER_ID, TUILogin.getUserId());
-        model.extInfo.put(TUIBarrageConstants.KEY_MSG_TYPE, "1");
         model.extInfo.put(TUIBarrageConstants.KEY_USER_NAME, TUILogin.getNickName());
         model.extInfo.put(TUIBarrageConstants.KEY_USER_AVATAR, TUILogin.getFaceUrl());
         return model;
