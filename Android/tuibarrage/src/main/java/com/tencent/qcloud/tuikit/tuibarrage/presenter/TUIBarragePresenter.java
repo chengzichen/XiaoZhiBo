@@ -56,7 +56,7 @@ public class TUIBarragePresenter implements ITUIBarragePresenter {
                     return;
                 }
                 //发送成功,回调给自己进行显示
-                model.extInfo.put(TUIBarrageConstants.KEY_USER_NAME, mContext.getString(R.string.tuibarrage_me));
+//                model.extInfo.put(TUIBarrageConstants.KEY_USER_NAME, mContext.getString(R.string.tuibarrage_me));
                 callback.onSuccess(code, msg, model);
             }
         });

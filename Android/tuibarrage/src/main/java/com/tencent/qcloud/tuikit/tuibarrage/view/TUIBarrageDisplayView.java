@@ -104,7 +104,7 @@ public class TUIBarrageDisplayView extends FrameLayout implements ITUIBarrageDis
         Object extInfo = data.get("extInfo");
         if (extInfo !=null&&extInfo instanceof  HashMap){
             tuiBarrageModel.extInfo= (HashMap<String, String>) extInfo;
-            tuiBarrageModel.extInfo.put(TUIBarrageConstants.KEY_USER_NAME, mContext.getString(R.string.tuibarrage_me));
+//            tuiBarrageModel.extInfo.put(TUIBarrageConstants.KEY_USER_NAME, mContext.getString(R.string.tuibarrage_me));
         }
         receiveBarrage(tuiBarrageModel);
     }
