@@ -5,6 +5,7 @@
     android:id="@+id/ll_outside_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/white"
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -12,7 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/tuibarrage_bg_send_view"
         android:orientation="horizontal"
        >
         <!--    弹幕发送-->
@@ -21,7 +21,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:hint="@string/tuibarrage_input_hint"
+            android:hint="说点什么吧..."
             android:imeOptions="flagNoExtractUi"
             android:inputType="text"
             android:maxLength="32"
