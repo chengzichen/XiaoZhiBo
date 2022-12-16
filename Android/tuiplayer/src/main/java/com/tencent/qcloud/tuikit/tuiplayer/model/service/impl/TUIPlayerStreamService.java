@@ -60,9 +60,13 @@ public class TUIPlayerStreamService implements ITUIPlayerStreamService {
 
     @Override
     public int startPlay(String url, TXCloudVideoView videoView) {
+        return startPlay(url,videoView,V2TXLiveDef.V2TXLiveFillMode.V2TXLiveFillModeFill);
+    }
+    @Override
+    public int startPlay(String url, TXCloudVideoView videoView,V2TXLiveDef.V2TXLiveFillMode v2TXLiveFillMode) {
         String playUrl = url;
         int renderCode = mV2TXLivePlayer.setRenderView(videoView);
-        mV2TXLivePlayer.setRenderFillMode(V2TXLiveDef.V2TXLiveFillMode.V2TXLiveFillModeFill);
+        mV2TXLivePlayer.setRenderFillMode(v2TXLiveFillMode);
         setFramework();
         int playCode = mV2TXLivePlayer.startLivePlay(playUrl);
         TXCLog.i(TAG, "setRenderView: ret" + renderCode + "startLivePlay: ret" + playCode + ", playUrl:" + playUrl);

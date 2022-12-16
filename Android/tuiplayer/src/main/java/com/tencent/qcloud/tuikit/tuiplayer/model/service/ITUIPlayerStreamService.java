@@ -1,5 +1,6 @@
 package com.tencent.qcloud.tuikit.tuiplayer.model.service;
 
+import com.tencent.live2.V2TXLiveDef;
 import com.tencent.qcloud.tuikit.tuiplayer.model.listener.ITUIPlayerStreamListener;
 import com.tencent.rtmp.ui.TXCloudVideoView;
 
@@ -23,6 +24,15 @@ public interface ITUIPlayerStreamService {
      * @return
      */
     int startPlay(String url, TXCloudVideoView videoView);
+
+    /**
+     * 开始拉流
+     *
+     * @param url
+     * @param videoView
+     * @return
+     */
+    int startPlay(String url, TXCloudVideoView videoView, V2TXLiveDef.V2TXLiveFillMode v2TXLiveFillMode);
 
     /**
      * 停止拉流

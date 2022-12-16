@@ -1,5 +1,6 @@
 package com.tencent.qcloud.tuikit.tuiplayer.view;
 
+import com.tencent.live2.V2TXLiveDef;
 import com.tencent.qcloud.tuikit.tuiplayer.view.listener.TUIPlayerViewListener;
 
 public interface ITUIPlayerView {
@@ -21,6 +22,8 @@ public interface ITUIPlayerView {
      * @param state TUIPlayerView UI显示状态
      */
     void updatePlayerUIState(TUIPlayerView.TUIPlayerUIState state);
+
+    void setV2TXLiveFillMode(V2TXLiveDef.V2TXLiveFillMode v2TXLiveFillMode);
 
     /**
      * 开始拉流

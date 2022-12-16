@@ -4,6 +4,7 @@ import android.content.Context;
 import android.text.TextUtils;
 
 import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.live2.V2TXLiveDef;
 import com.tencent.qcloud.tuicore.TUILogin;
 import com.tencent.qcloud.tuicore.util.ToastUtil;
 import com.tencent.qcloud.tuikit.tuiplayer.R;
@@ -49,9 +50,13 @@ public class TUIPlayerPresenter implements ITUIPlayerPresenter, ITUIPlayerStream
 
     @Override
     public int startPlay(String url, TXCloudVideoView view) {
+        return startPlay(url,view, V2TXLiveDef.V2TXLiveFillMode.V2TXLiveFillModeFill);
+    }
+    @Override
+    public int startPlay(String url, TXCloudVideoView view, V2TXLiveDef.V2TXLiveFillMode v2TXLiveFillMode) {
         TXCLog.i(TAG, "startPlay url:" + url);
         mPlayUrl = url;
-        int ret = mStreamService.startPlay(mPlayUrl, view);
+        int ret = mStreamService.startPlay(mPlayUrl, view,v2TXLiveFillMode);
         mSignallingService.login();
         return ret;
     }

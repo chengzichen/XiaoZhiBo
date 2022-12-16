@@ -9,6 +9,7 @@ import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.live2.V2TXLiveDef;
 import com.tencent.qcloud.tuicore.TUIConfig;
 import com.tencent.qcloud.tuicore.util.ToastUtil;
 import com.tencent.qcloud.tuikit.tuiplayer.R;
@@ -46,7 +47,7 @@ public class TUIPlayerView extends FrameLayout implements ITUIPlayerView {
     private String                mRoomId;
     private String                mAnchorId;
     private TUIPlayerViewListener mListener;
-
+    private V2TXLiveDef.V2TXLiveFillMode v2TXLiveFillMode= V2TXLiveDef.V2TXLiveFillMode.V2TXLiveFillModeFill;
     public TUIPlayerView(Context context) {
         this(context, null);
     }
@@ -202,7 +203,7 @@ public class TUIPlayerView extends FrameLayout implements ITUIPlayerView {
                 mLinkState = LinkState.LINK_IDLE;
                 mTUIVideoView.showLinkMode(false);
                 mContainerView.setLinkImage(R.drawable.tuiplayer_link_on_icon);
-                mTUIPlayerPresenter.startPlay(mPlayUrl, mTUIVideoView.getMainVideoView());
+                mTUIPlayerPresenter.startPlay(mPlayUrl, mTUIVideoView.getMainVideoView(),v2TXLiveFillMode);
                 mListener.onPlayEvent(this, TUIPlayerViewListener.TUIPlayerEvent.TUIPLAYER_EVENT_LINKMIC_STOP,
                         "LinkMic stop");
                 break;
@@ -230,7 +231,8 @@ public class TUIPlayerView extends FrameLayout implements ITUIPlayerView {
             @Override
             public void onResponseJoinAnchor(String streamId) {
                 mTUIVideoView.showLinkMode(true);
-                mTUIPlayerPresenter.startPlay(LinkURLUtils.generatePlayUrl(streamId), mTUIVideoView.getMainVideoView());
+                mTUIPlayerPresenter.startPlay(LinkURLUtils.generatePlayUrl(streamId),
+                        mTUIVideoView.getMainVideoView(),v2TXLiveFillMode);
                 mTUIPlayerPresenter.startPush(true, mTUIVideoView.getLinkVideoView());
             }
 
@@ -317,6 +319,11 @@ public class TUIPlayerView extends FrameLayout implements ITUIPlayerView {
     }
 
     @Override
+    public void setV2TXLiveFillMode(V2TXLiveDef.V2TXLiveFillMode v2TXLiveFillMode) {
+        this.v2TXLiveFillMode = v2TXLiveFillMode;
+    }
+
+    @Override
     public int startPlay(String url) {
         TXCLog.i(TAG, "start url:" + url);
         if (!LinkURLUtils.checkPlayURL(url)) {
@@ -326,7 +333,7 @@ public class TUIPlayerView extends FrameLayout implements ITUIPlayerView {
         mPlayUrl = url;
         mAnchorId = LinkURLUtils.getStreamIdByPushUrl(mPlayUrl);
         mContainerView.setGroupId(mRoomId);
-        int ret = mTUIPlayerPresenter.startPlay(mPlayUrl, mTUIVideoView.getMainVideoView());
+        int ret = mTUIPlayerPresenter.startPlay(mPlayUrl, mTUIVideoView.getMainVideoView(),v2TXLiveFillMode);
         if (mListener == null) {
             return ret;
         }

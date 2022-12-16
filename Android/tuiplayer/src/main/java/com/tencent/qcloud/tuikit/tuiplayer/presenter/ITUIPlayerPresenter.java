@@ -1,5 +1,6 @@
 package com.tencent.qcloud.tuikit.tuiplayer.presenter;
 
+import com.tencent.live2.V2TXLiveDef;
 import com.tencent.rtmp.ui.TXCloudVideoView;
 
 /**
@@ -14,6 +15,14 @@ public interface ITUIPlayerPresenter {
      * @param view 承载视频画面的控件
      */
     int startPlay(String url, TXCloudVideoView view);
+
+    /**
+     * 开启本地视频的预览画面
+     *
+     * @param url
+     * @param view 承载视频画面的控件
+     */
+    int startPlay(String url, TXCloudVideoView view, V2TXLiveDef.V2TXLiveFillMode v2TXLiveFillMode);
 
     /**
      * 停止播放
