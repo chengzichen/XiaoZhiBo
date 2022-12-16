@@ -2,6 +2,8 @@ package com.tencent.qcloud.tuikit.tuibarrage.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.Display;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -74,11 +76,13 @@ public class TUIBarrageButton extends FrameLayout {
 
     //弹幕发送弹框显示,宽度自适应屏幕
     private void showSendDialog() {
-        Window window = mBarrageSendView.getWindow();
-        window.getDecorView().setPadding(0, 0, 0, 0);
-        WindowManager.LayoutParams layoutParams = window.getAttributes();
-        layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
-        window.setAttributes(layoutParams);
+        mBarrageSendView.getWindow().setGravity(Gravity.BOTTOM);
+        WindowManager m = mBarrageSendView.getWindow().getWindowManager();
+        Display d = m.getDefaultDisplay();
+        WindowManager.LayoutParams p = mBarrageSendView.getWindow().getAttributes();
+        p.width = WindowManager.LayoutParams.MATCH_PARENT;
+        p.height = WindowManager.LayoutParams.WRAP_CONTENT;
+        mBarrageSendView.getWindow().setAttributes(p);
         mBarrageSendView.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
         mBarrageSendView.show();
     }

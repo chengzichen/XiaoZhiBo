@@ -5,8 +5,10 @@ import android.content.Context;
 import android.graphics.PorterDuff;
 import android.text.InputType;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -41,6 +43,8 @@ public class TUIBarrageSendView extends Dialog implements ITUIBarrageSendView {
     public TUIBarrageSendView(Context context, String groupId) {
         super(context, R.style.TUIBarrageInputDialog);
         setContentView(R.layout.tuibarrage_dialog_send);
+        Window window = getWindow();
+        window.setGravity(Gravity.BOTTOM);
         mGroupId = groupId;
         this.mContext = context;
         mInputMethodManager = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
