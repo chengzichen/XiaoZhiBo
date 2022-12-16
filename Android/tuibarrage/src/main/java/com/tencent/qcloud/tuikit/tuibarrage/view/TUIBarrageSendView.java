@@ -47,6 +47,7 @@ public class TUIBarrageSendView extends Dialog implements ITUIBarrageSendView {
         window.setGravity(Gravity.BOTTOM);
         mGroupId = groupId;
         this.mContext = context;
+        setCanceledOnTouchOutside(true);
         mInputMethodManager = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
         initView();
         initListener();
@@ -125,6 +126,14 @@ public class TUIBarrageSendView extends Dialog implements ITUIBarrageSendView {
                 dismiss();
             }
         });
+    }
+
+    @Override
+    public void dismiss() {
+        super.dismiss();
+        if (mInputMethodManager!=null){
+            mInputMethodManager.hideSoftInputFromWindow(mEditText.getWindowToken(), 0);
+        }
     }
 
     @Override
