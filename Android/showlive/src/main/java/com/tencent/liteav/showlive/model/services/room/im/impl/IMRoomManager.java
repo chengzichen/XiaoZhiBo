@@ -22,6 +22,7 @@ import com.tencent.imsdk.v2.V2TIMSimpleMsgListener;
 import com.tencent.imsdk.v2.V2TIMUserFullInfo;
 import com.tencent.imsdk.v2.V2TIMUserInfo;
 import com.tencent.imsdk.v2.V2TIMValueCallback;
+import com.tencent.liteav.login.model.ProfileManager;
 import com.tencent.liteav.showlive.R;
 import com.tencent.liteav.showlive.model.services.room.bean.AudienceInfo;
 import com.tencent.liteav.showlive.model.services.room.bean.RoomInfo;
@@ -39,7 +40,7 @@ public class IMRoomManager implements IIMRoomManager {
     private static final String        TAG = "IMRoomManager";
     private static       IMRoomManager sInstance;
 
-    private Context                   mContext;
+    private Context                   mContext= ProfileManager.getInstance().getmContext();
     private LiveRoomSimpleMsgListener mSimpleListener;
     private LiveRoomGroupListener     mGroupListener;
     private OnMemberChangeListener    mMemberChangeListener;

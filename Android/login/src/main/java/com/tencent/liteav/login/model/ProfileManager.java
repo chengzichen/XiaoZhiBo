@@ -91,6 +91,11 @@ public class ProfileManager {
         mContext = context;
     }
 
+    public Context getmContext() {
+        return mContext;
+    }
+
+
     private ProfileManager() {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         builder.addInterceptor(new HttpLogInterceptor());
