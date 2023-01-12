@@ -84,37 +84,36 @@ public class ContainerView extends FrameLayout {
         giftParaMap.put("groupId", groupId);
         Map<String, Object> giftRetMap = TUICore.getExtensionInfo("com.tencent.qcloud.tuikit.tuigift.core.TUIGiftExtension", giftParaMap);
         if (giftRetMap != null && giftRetMap.size() > 0) {
-            Object giftSendView = giftRetMap.get("TUIExtensionView");
-            if (giftSendView != null && giftSendView instanceof View) {
-                if (this.giftSendView==null){
-                    this.giftSendView= (View) giftSendView;
+            if (this.giftSendView == null) {
+                Object giftSendView = giftRetMap.get("TUIExtensionView");
+                if (giftSendView != null && giftSendView instanceof View) {
+                    this.giftSendView = (View) giftSendView;
                     setGiftView((View) giftSendView);
+                    TXCLog.i(TAG, "TUIGift TUIExtensionView getExtensionInfo success");
+                } else {
+                    TXCLog.i(TAG, "TUIGift TUIExtensionView getExtensionInfo not find");
                 }
-                TXCLog.i(TAG, "TUIGift TUIExtensionView getExtensionInfo success");
-            } else {
-                TXCLog.i(TAG, "TUIGift TUIExtensionView getExtensionInfo not find");
             }
+            if (this.giftDisplayView == null) {
+                Object giftDisplayView = giftRetMap.get("TUIGiftPlayView");
+                if (giftDisplayView != null && giftDisplayView instanceof View) {
 
-            Object giftDisplayView = giftRetMap.get("TUIGiftPlayView");
-            if (giftDisplayView != null && giftDisplayView instanceof View) {
-                if (this.giftDisplayView == null) {
                     this.giftDisplayView = (View) giftDisplayView;
                     setGiftShowView((View) giftDisplayView);
+                    TXCLog.i(TAG, "TUIGift TUIGiftPlayView getExtensionInfo success");
+                } else {
+                    TXCLog.i(TAG, "TUIGift TUIGiftPlayView getExtensionInfo not find");
                 }
-                TXCLog.i(TAG, "TUIGift TUIGiftPlayView getExtensionInfo success");
-            } else {
-                TXCLog.i(TAG, "TUIGift TUIGiftPlayView getExtensionInfo not find");
             }
-
-            Object likeView = giftRetMap.get("TUILikeButton");
-            if (likeView != null && likeView instanceof View) {
-                if (this.likeView==null){
-                    this.likeView= (View) likeView;
+            if (this.likeView == null) {
+                Object likeView = giftRetMap.get("TUILikeButton");
+                if (likeView != null && likeView instanceof View) {
+                    this.likeView = (View) likeView;
                     setLikeView((View) likeView);
+                    TXCLog.i(TAG, "TUIGift TUILikeButton getExtensionInfo success");
+                } else {
+                    TXCLog.i(TAG, "TUIGift TUILikeButton getExtensionInfo not find");
                 }
-                TXCLog.i(TAG, "TUIGift TUILikeButton getExtensionInfo success");
-            } else {
-                TXCLog.i(TAG, "TUIGift TUILikeButton getExtensionInfo not find");
             }
         } else {
             TXCLog.i(TAG, "TUIGift getExtensionInfo null");
@@ -127,25 +126,24 @@ public class ContainerView extends FrameLayout {
         Map<String, Object> barrageRetMap = TUICore.getExtensionInfo("com.tencent.qcloud.tuikit.tuibarrage.core.TUIBarrageExtension", barrageParaMap);
         if (barrageRetMap != null && barrageRetMap.size() > 0) {
             Object barrageSendView = barrageRetMap.get("TUIBarrageButton");
-            if (barrageSendView != null && barrageSendView instanceof View) {
-                if (this.barrageSendView==null) {
+            if (this.barrageSendView == null) {
+                if (barrageSendView != null && barrageSendView instanceof View) {
                     this.barrageSendView = (View) barrageSendView;
                     setBarrageView((View) barrageSendView);
+                    TXCLog.i(TAG, "TUIBarrage barrageSendView getExtensionInfo success");
+                } else {
+                    TXCLog.i(TAG, "TUIBarrage barrageSendView getExtensionInfo not find");
                 }
-                TXCLog.i(TAG, "TUIBarrage barrageSendView getExtensionInfo success");
-            } else {
-                TXCLog.i(TAG, "TUIBarrage barrageSendView getExtensionInfo not find");
             }
-
-            Object barrageDisplayView = barrageRetMap.get("TUIBarrageDisplayView");
-            if (barrageDisplayView != null && barrageDisplayView instanceof View) {
-                if (this.barrageDisplayView==null){
+            if (this.barrageDisplayView == null) {
+                Object barrageDisplayView = barrageRetMap.get("TUIBarrageDisplayView");
+                if (barrageDisplayView != null && barrageDisplayView instanceof View) {
                     this.barrageDisplayView = (View) barrageDisplayView;
                     setBarrageShowView((View) barrageDisplayView);
+                    TXCLog.i(TAG, "TUIBarrage TUIBarrageDisplayView getExtensionInfo success");
+                } else {
+                    TXCLog.i(TAG, "TUIBarrage TUIBarrageDisplayView getExtensionInfo not find");
                 }
-                TXCLog.i(TAG, "TUIBarrage TUIBarrageDisplayView getExtensionInfo success");
-            } else {
-                TXCLog.i(TAG, "TUIBarrage TUIBarrageDisplayView getExtensionInfo not find");
             }
         } else {
             TXCLog.i(TAG, "TUIBarrage getExtensionInfo null");
