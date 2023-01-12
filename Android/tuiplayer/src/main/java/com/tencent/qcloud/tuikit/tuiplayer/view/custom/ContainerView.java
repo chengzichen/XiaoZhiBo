@@ -26,20 +26,22 @@ import java.util.Map;
 public class ContainerView extends FrameLayout {
     private static final String TAG = "ContainerView";
 
-    private View           mViewRoot;
+    private View mViewRoot;
     private LinearLayout mLlContainer;
-    private ImageView      mImageLink;
+    private ImageView mImageLink;
     private RelativeLayout mLayoutGift;
     private RelativeLayout mLayoutLike;
     private RelativeLayout mLayoutGiftShow;
     private RelativeLayout mLayoutBarrage;
     private RelativeLayout mLayoutBarrageShow;
-    private int            mIconWidth;
-    private int            mIconHeight;
+    private int mIconWidth;
+    private int mIconHeight;
     private OnLinkListener mListener;
-    private View           barrageSendView;
-    private View           barrageDisplayView;
-    private View           giftDisplayView;
+    private View barrageSendView;
+    private View barrageDisplayView;
+    private View giftDisplayView;
+    private View giftSendView;
+    private View likeView;
 
     public ContainerView(@NonNull Context context) {
         this(context, null);
@@ -84,7 +86,10 @@ public class ContainerView extends FrameLayout {
         if (giftRetMap != null && giftRetMap.size() > 0) {
             Object giftSendView = giftRetMap.get("TUIExtensionView");
             if (giftSendView != null && giftSendView instanceof View) {
-                setGiftView((View) giftSendView);
+                if (this.giftSendView==null){
+                    this.giftSendView= (View) giftSendView;
+                    setGiftView((View) giftSendView);
+                }
                 TXCLog.i(TAG, "TUIGift TUIExtensionView getExtensionInfo success");
             } else {
                 TXCLog.i(TAG, "TUIGift TUIExtensionView getExtensionInfo not find");
@@ -92,8 +97,10 @@ public class ContainerView extends FrameLayout {
 
             Object giftDisplayView = giftRetMap.get("TUIGiftPlayView");
             if (giftDisplayView != null && giftDisplayView instanceof View) {
-                this.giftDisplayView= (View) giftDisplayView;
-                setGiftShowView((View) giftDisplayView);
+                if (this.giftDisplayView == null) {
+                    this.giftDisplayView = (View) giftDisplayView;
+                    setGiftShowView((View) giftDisplayView);
+                }
                 TXCLog.i(TAG, "TUIGift TUIGiftPlayView getExtensionInfo success");
             } else {
                 TXCLog.i(TAG, "TUIGift TUIGiftPlayView getExtensionInfo not find");
@@ -101,7 +108,10 @@ public class ContainerView extends FrameLayout {
 
             Object likeView = giftRetMap.get("TUILikeButton");
             if (likeView != null && likeView instanceof View) {
-                setLikeView((View) likeView);
+                if (this.likeView==null){
+                    this.likeView= (View) likeView;
+                    setLikeView((View) likeView);
+                }
                 TXCLog.i(TAG, "TUIGift TUILikeButton getExtensionInfo success");
             } else {
                 TXCLog.i(TAG, "TUIGift TUILikeButton getExtensionInfo not find");
@@ -118,8 +128,10 @@ public class ContainerView extends FrameLayout {
         if (barrageRetMap != null && barrageRetMap.size() > 0) {
             Object barrageSendView = barrageRetMap.get("TUIBarrageButton");
             if (barrageSendView != null && barrageSendView instanceof View) {
-                this.barrageSendView= (View) barrageSendView;
-                setBarrageView((View) barrageSendView);
+                if (this.barrageSendView==null) {
+                    this.barrageSendView = (View) barrageSendView;
+                    setBarrageView((View) barrageSendView);
+                }
                 TXCLog.i(TAG, "TUIBarrage barrageSendView getExtensionInfo success");
             } else {
                 TXCLog.i(TAG, "TUIBarrage barrageSendView getExtensionInfo not find");
@@ -127,8 +139,10 @@ public class ContainerView extends FrameLayout {
 
             Object barrageDisplayView = barrageRetMap.get("TUIBarrageDisplayView");
             if (barrageDisplayView != null && barrageDisplayView instanceof View) {
-                this.barrageDisplayView= (View) barrageDisplayView;
-                setBarrageShowView((View) barrageDisplayView);
+                if (this.barrageDisplayView==null){
+                    this.barrageDisplayView = (View) barrageDisplayView;
+                    setBarrageShowView((View) barrageDisplayView);
+                }
                 TXCLog.i(TAG, "TUIBarrage TUIBarrageDisplayView getExtensionInfo success");
             } else {
                 TXCLog.i(TAG, "TUIBarrage TUIBarrageDisplayView getExtensionInfo not find");
@@ -169,6 +183,7 @@ public class ContainerView extends FrameLayout {
     public View getGiftDisplayView() {
         return giftDisplayView;
     }
+
     public void setGiftView(View view) {
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(mIconWidth, mIconHeight);
         params.addRule(RelativeLayout.CENTER_IN_PARENT);
